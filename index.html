@@ -31,6 +31,7 @@
             object-position: center center;
         }
 
+        /* Brand message styling */
         .brand-message {
             background-color: #D86A1A;
             color: white;
@@ -47,86 +48,53 @@
             line-height: 1.5;
         }
 
-        /* Navigation Menu */
-        nav {
-            background-color: #D86A1A;
-            padding: 10px 0;
-            display: none; /* Initially hidden for hamburger toggle */
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            position: absolute;
-            top: 60px;
-            width: 100%;
-        }
-
-        nav.active {
-            display: flex;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: black;
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            color: white;
-        }
-
-        /* Hamburger Icon */
+        /* Hamburger Menu */
         .hamburger {
-            background: #D86A1A;
-            padding: 10px;
-            font-size: 1.5em;
-            color: white;
-            border: none;
-            cursor: pointer;
-            text-align: left;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 2;
-        }
-
-        /* Image Carousel */
-        .carousel {
-            position: relative;
-            max-width: 100%;
-            margin: 40px 0;
-            overflow: hidden;
-        }
-
-        .carousel-images {
-            display: flex;
-            transition: transform 1s ease;
-        }
-
-        .carousel-images img {
-            width: 100%;
-            height: auto;
-        }
-
-        .carousel-buttons {
             position: absolute;
-            top: 50%;
-            left: 10px;
-            right: 10px;
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .carousel-button {
-            background-color: rgba(0, 0, 0, 0.5);
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 2;
+            background-color: transparent;
             border: none;
             color: white;
-            padding: 10px;
-            cursor: pointer;
+            font-size: 2rem;
         }
 
-        /* Footer */
+        /* Navigation Menu */
+        .nav-panel {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Start off-screen */
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: left 0.3s ease;
+            z-index: 1;
+        }
+
+        .nav-panel a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2em;
+            margin: 10px 0;
+            transition: color 0.2s ease;
+        }
+
+        .nav-panel a:hover {
+            color: #D86A1A;
+        }
+
+        .nav-panel.active {
+            left: 0; /* Slide in */
+        }
+
+        /* Footer / Contact Information */
         footer {
             background-color: black;
             color: #D86A1A;
@@ -145,17 +113,27 @@
 
         /* Responsive design */
         @media (max-width: 768px) {
-            nav {
-                position: static;
+            .brand-message {
+                font-size: 1.5em;
             }
 
-            .carousel-images img {
-                width: 100%;
+            .nav-panel a {
+                font-size: 1em;
             }
         }
     </style>
 </head>
 <body>
+
+    <!-- Hamburger Menu -->
+    <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-panel" id="navPanel">
+        <a href="#home">Home</a>
+        <a href="hoodies.html">Hoodies</a>
+        <a href="sweatsuits.html">Sweatsuits</a>
+    </nav>
 
     <!-- Header -->
     <header>
@@ -164,33 +142,7 @@
 
     <!-- Brand Message -->
     <section class="brand-message">
-        <p>Here to inspire the passionate, desired and determined</p>
-    </section>
-
-    <!-- Hamburger Menu -->
-    <button class="hamburger" onclick="toggleMenu()">
-        ☰ Menu
-    </button>
-
-    <!-- Navigation Menu -->
-    <nav id="menu">
-        <a href="#home">Home</a>
-        <a href="hoodies.html">Hoodies</a>
-        <a href="sweatsuits.html">Sweatsuits</a>
-    </nav>
-
-    <!-- Image Carousel -->
-    <section class="carousel">
-        <div class="carousel-images">
-            <img src="https://via.placeholder.com/1200x500/FF7F00/FFFFFF?text=Hoodie+1" alt="Hoodie 1">
-            <img src="https://via.placeholder.com/1200x500/FF7F00/FFFFFF?text=Sweatsuit+1" alt="Sweatsuit 1">
-            <img src="https://via.placeholder.com/1200x500/FF7F00/FFFFFF?text=Hoodie+2" alt="Hoodie 2">
-            <img src="https://via.placeholder.com/1200x500/FF7F00/FFFFFF?text=Sweatsuit+2" alt="Sweatsuit 2">
-        </div>
-        <div class="carousel-buttons">
-            <button class="carousel-button" onclick="moveSlide(-1)">&#10094;</button>
-            <button class="carousel-button" onclick="moveSlide(1)">&#10095;</button>
-        </div>
+        <p>Here to inspire the passionate, desired, and determined</p>
     </section>
 
     <!-- Footer -->
@@ -198,31 +150,17 @@
         <p><strong>Founded:</strong> 2021</p>
         <p><strong>Contact Us:</strong></p>
         <p>Email: <a href="mailto:info@mostambitiousclothing.com">info@mostambitiousclothing.com</a></p>
-        <p>Instagram: @mostabmbitiousclothing</p>
+        <p>Instagram: @mostambitiousclothing</p>
     </footer>
 
     <script>
-        // Hamburger menu toggle
+        // Toggle the navigation menu
         function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.classList.toggle('active');
-        }
-
-        // Image carousel functionality
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.carousel-images img');
-
-        function moveSlide(n) {
-            slideIndex += n;
-            if (slideIndex >= slides.length) {
-                slideIndex = 0;
-            }
-            if (slideIndex < 0) {
-                slideIndex = slides.length - 1;
-            }
-            document.querySelector('.carousel-images').style.transform = 'translateX(' + (-slideIndex * 100) + '%)';
+            const navPanel = document.getElementById('navPanel');
+            navPanel.classList.toggle('active');
         }
     </script>
 
 </body>
 </html>
+
