@@ -59,6 +59,7 @@
             border: none;
             color: white;
             font-size: 2rem;
+            display: block;
         }
 
         /* Navigation Menu */
@@ -75,7 +76,7 @@
             padding: 20px;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
             transition: left 0.3s ease;
-            z-index: 1;
+            z-index: 3;
         }
 
         .nav-panel a {
@@ -92,6 +93,23 @@
 
         .nav-panel.active {
             left: 0; /* Slide in */
+        }
+
+        /* Exit Button */
+        .exit-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            color: white;
+        }
+
+        /* Hide Hamburger when menu is active */
+        .hamburger.hidden {
+            display: none;
         }
 
         /* Footer / Contact Information */
@@ -126,10 +144,11 @@
 <body>
 
     <!-- Hamburger Menu -->
-    <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">&#9776;</button>
 
     <!-- Navigation Menu -->
     <nav class="nav-panel" id="navPanel">
+        <button class="exit-btn" id="exitButton" onclick="toggleMenu()">&#10005;</button>
         <a href="#home">Home</a>
         <a href="hoodies.html">Hoodies</a>
         <a href="sweatsuits.html">Sweatsuits</a>
@@ -157,10 +176,13 @@
         // Toggle the navigation menu
         function toggleMenu() {
             const navPanel = document.getElementById('navPanel');
+            const hamburger = document.getElementById('hamburger');
             navPanel.classList.toggle('active');
+            hamburger.classList.toggle('hidden');
         }
     </script>
 
 </body>
 </html>
+
 
