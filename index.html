@@ -11,24 +11,24 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #111;
+            background-image: url('IMG_1868.jpg'); /* Replace with the path to your image */
+            background-size: cover; /* Ensures the image covers the whole page */
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed; /* Makes the image stay in place when scrolling */
             color: white;
         }
 
-        /* Header styles */
-        header {
-            width: 100%;
-            height: 500px;
-            background-color: black;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        header img {
+        /* Transparent overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            object-position: center center;
+            background-color: rgba(0, 0, 0, 0.7); /* Black overlay with 70% opacity */
+            z-index: -1; /* Ensures the overlay is behind all content */
         }
 
         /* Brand message styling */
@@ -75,8 +75,8 @@
             flex-direction: column;
             padding: 20px;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-            transform: translateX(-100%); /* Fully off-screen */
-            visibility: hidden; /* Hide the menu */
+            transform: translateX(-100%);
+            visibility: hidden;
             transition: transform 0.3s ease, visibility 0.3s ease;
             z-index: 3;
         }
@@ -94,8 +94,8 @@
         }
 
         .nav-panel.active {
-            transform: translateX(0); /* Slide in */
-            visibility: visible; /* Make it visible */
+            transform: translateX(0);
+            visibility: visible;
         }
 
         /* Exit Button */
@@ -156,11 +156,6 @@
         <a href="hoodies.html">Hoodies</a>
         <a href="sweatsuits.html">Sweatsuits</a>
     </nav>
-
-    <!-- Header -->
-    <header>
-        <img src="IMG_1868.jpg" alt="Most Ambitious Clothing">
-    </header>
 
     <!-- Brand Message -->
     <section class="brand-message">
