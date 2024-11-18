@@ -66,7 +66,7 @@
         .nav-panel {
             position: fixed;
             top: 0;
-            left: -250px; /* Start off-screen */
+            left: 0;
             width: 250px;
             height: 100%;
             background-color: #333;
@@ -75,7 +75,9 @@
             flex-direction: column;
             padding: 20px;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-            transition: left 0.3s ease;
+            transform: translateX(-100%); /* Fully off-screen */
+            visibility: hidden; /* Hide the menu */
+            transition: transform 0.3s ease, visibility 0.3s ease;
             z-index: 3;
         }
 
@@ -92,7 +94,8 @@
         }
 
         .nav-panel.active {
-            left: 0; /* Slide in */
+            transform: translateX(0); /* Slide in */
+            visibility: visible; /* Make it visible */
         }
 
         /* Exit Button */
@@ -184,5 +187,6 @@
 
 </body>
 </html>
+
 
 
