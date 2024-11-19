@@ -5,117 +5,188 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Sweatsuits - Most Ambitious Clothing</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 	<style>
-    	/* Same styling as the hoodies page or custom styling for sweatsuits */
-    	body {
-        	font-family: 'Arial', sans-serif;
-        	margin: 0;
-        	padding: 0;
-        	background-color: #111;
-        	color: white;
-    	}
+		/* General Styling */
+		body {
+			font-family: 'Roboto', sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #1A1A1A;
+			color: white;
+		}
 
-    	/* Header styles */
-    	header {
-        	width: 100%;
-        	height: 200px; /* Adjust the height of the header */
-        	background-color: black;
-        	text-align: center;
-        	overflow: hidden;
-    	}
+		/* Header Styling */
+		header {
+			width: 100%;
+			height: 250px;
+			background-color: black;
+			text-align: center;
+			overflow: hidden;
+			position: relative;
+		}
 
-    	header img {
-        	width: 100%;
-        	height: 100%;
-        	object-fit: cover;
-        	object-position: center center;
-    	}
+		header img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center center;
+			opacity: 0.8;
+			transition: opacity 0.5s ease;
+		}
 
-    	/* Page Content */
-    	section {
-        	padding: 20px;
-        	text-align: center;
-    	}
+		header img:hover {
+			opacity: 1;
+		}
 
-    	/* Pricing Table */
-    	.table {
-        	width: 80%;
-        	margin: 20px auto;
-        	border-collapse: collapse;
-    	}
+		header h1 {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 2.5rem;
+			font-weight: bold;
+			text-transform: uppercase;
+			color: #D86A1A;
+			text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+			margin: 0;
+		}
 
-    	.table th, .table td {
-        	padding: 10px;
-        	border: 1px solid #D86A1A;
-        	text-align: center;
-    	}
+		/* Section Styling */
+		section {
+			padding: 30px 20px;
+			text-align: center;
+		}
 
-    	.table th {
-        	background-color: #D86A1A;
-        	color: white;
-    	}
+		section h1 {
+			font-size: 2.2rem;
+			text-transform: uppercase;
+			color: #D86A1A;
+			text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+			margin-bottom: 10px;
+		}
 
-    	/* Footer */
-    	footer {
-        	background-color: black;
-        	color: #D86A1A;
-        	padding: 20px;
-        	text-align: center;
-    	}
-		/* Back to Main Page link */
-    	.back-to-home {
-        	display: inline-block;
-        	margin-top: 20px;
-        	background-color: #D86A1A;
-        	color: white;
-        	padding: 10px 20px;
-        	text-decoration: none;
-        	font-size: 1.2em;
-        	font-weight: bold;
-        	border-radius: 5px;
-        	transition: background-color 0.3s;
-    	}
+		section p {
+			font-size: 1.2rem;
+			margin-bottom: 20px;
+			line-height: 1.6;
+			opacity: 0.9;
+		}
 
-    	.back-to-home:hover {
-        	background-color: #b55a0f;
-    	}
+		/* Table Styling */
+		.table {
+			width: 90%;
+			margin: 0 auto 30px;
+			border-collapse: collapse;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+		}
+
+		.table th, .table td {
+			padding: 15px;
+			border: 1px solid #D86A1A;
+			text-align: center;
+			font-size: 1.1rem;
+		}
+
+		.table th {
+			background: linear-gradient(45deg, #D86A1A, #FFA500);
+			color: white;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+
+		.table td {
+			background-color: #2A2A2A;
+			color: white;
+			transition: transform 0.3s ease, background-color 0.3s ease;
+		}
+
+		.table td:hover {
+			background-color: #3A3A3A;
+			transform: scale(1.05);
+		}
+
+		/* Back to Home Button */
+		.back-to-home {
+			display: inline-block;
+			background: linear-gradient(45deg, #D86A1A, #FFA500);
+			color: white;
+			padding: 12px 25px;
+			font-size: 1.2rem;
+			font-weight: bold;
+			text-transform: uppercase;
+			text-decoration: none;
+			border-radius: 30px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.back-to-home:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+		}
+
+		/* Footer Styling */
+		footer {
+			background-color: black;
+			color: white;
+			padding: 20px;
+			text-align: center;
+		}
+
+		footer p {
+			margin: 10px 0;
+			font-size: 1rem;
+		}
+
+		footer a {
+			color: #D86A1A;
+			text-decoration: none;
+			transition: color 0.3s ease;
+		}
+
+		footer a:hover {
+			color: #FFA500;
+		}
 	</style>
 </head>
 <body>
 
 	<header>
-    	<img src="https://via.placeholder.com/1200x500/FF7F00/FFFFFF?text=Sweatsuits" alt="Sweatsuits - Most Ambitious Clothing">
+		<img src="https://via.placeholder.com/1200x500/FF7F00/FFFFFF?text=Sweatsuits" alt="Sweatsuits - Most Ambitious Clothing">
+		<h1>Sweatsuits Collection</h1>
 	</header>
 
 	<section>
-    	<h1>Sweatsuits Collection</h1>
-    	<p>Explore our high-quality sweatsuits and their prices below:</p>
+		<h1>Our Premium Sweatsuits</h1>
+		<p>Discover unmatched comfort and style with our exclusive sweatsuit collection.</p>
 
-    	<table class="table">
-        	<tr>
-            	<th>Sweatsuit Model</th>
-            	<th>Price</th>
-        	</tr>
-        	<tr>
-            	<td>Classic Sweatsuit</td>
-            	<td>$69.99</td>
-        	</tr>
-        	<tr>
-            	<td>Performance Sweatsuit</td>
-            	<td>$79.99</td>
-        	</tr>
-        	<tr>
-            	<td>Luxury Sweatsuit</td>
-            	<td>$89.99</td>
-        	</tr>
-    	</table>
-	<a href="index.html" class="back-to-home">Back to Home</a>
+		<table class="table">
+			<tr>
+				<th>Sweatsuit Model</th>
+				<th>Price</th>
+			</tr>
+			<tr>
+				<td>Classic Sweatsuit</td>
+				<td>$69.99</td>
+			</tr>
+			<tr>
+				<td>Performance Sweatsuit</td>
+				<td>$79.99</td>
+			</tr>
+			<tr>
+				<td>Luxury Sweatsuit</td>
+				<td>$89.99</td>
+			</tr>
+		</table>
+		<a href="index.html" class="back-to-home">Back to Home</a>
 	</section>
 
 	<footer>
-    	<p><strong>Contact Us:</strong></p>
-    	<p>Email: <a href="mailto:info@mostambitiousclothing.com">info@mostambitiousclothing.com</a></p>
+		<p><strong>Contact Us:</strong></p>
+		<p>Email: <a href="mailto:info@mostambitiousclothing.com">info@mostambitiousclothing.com</a></p>
 	</footer>
 
 </body>
 </html>
+
