@@ -98,7 +98,8 @@
             cursor: pointer;
         }
 
-        .blur {
+        .fullscreen-active .wrapper,
+        .fullscreen-active footer {
             filter: blur(5px);
         }
 
@@ -126,6 +127,24 @@
             border-radius: 5px;
             font-size: 1.2em;
         }
+
+        .back-home {
+            margin-top: 30px;
+        }
+
+        .back-home a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #FFA500;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+
+        .back-home a:hover {
+            background: #FF8C00;
+        }
     </style>
 </head>
 <body>
@@ -133,12 +152,12 @@
     <div class="wrapper">
         <div class="slider-container">
             <div class="slider" id="slider">
-                <img src="IMG_2038.jpg" alt="Page 1" onclick="openFullscreen(this)">
-                <img src="IMG_2039.jpg" alt="Page 2" onclick="openFullscreen(this)">
-                <img src="IMG_2040.jpg" alt="Page 3" onclick="openFullscreen(this)">
-                <img src="IMG_2041.jpg" alt="Pagee 4" onclick="openFullscreen(this)">
-                <img src="IMG_2042.jpg" alt="Page 5" onclick="openFullscreen(this)">
-                <img src="IMG_2043.jpg" alt="Page 6" onclick="openFullscreen(this)">
+                <img src="IMG_2038.jpg" alt="Hoodie 1" onclick="openFullscreen(this)">
+                <img src="IMG_2039.jpg" alt="Hoodie 2" onclick="openFullscreen(this)">
+                <img src="IMG_2040.jpg" alt="Hoodie 3" onclick="openFullscreen(this)">
+                <img src="IMG_2041.jpg" alt="Hoodie 4" onclick="openFullscreen(this)">
+                <img src="IMG_2042.jpg" alt="Hoodie 5" onclick="openFullscreen(this)">
+                <img src="IMG_2043.jpg" alt="Hoodie 6" onclick="openFullscreen(this)">
             </div>
             <div class="arrow left" onclick="moveSlide(-1)">&#10094;</div>
             <div class="arrow right" onclick="moveSlide(1)">&#10095;</div>
@@ -149,6 +168,10 @@
             <p>Premium quality hoodie, perfect for any occasion. Available in all sizes.</p>
             <p class="price">$49.99</p>
             <a href="cart.html" class="add-to-cart">Add to Cart</a>
+        </div>
+
+        <div class="back-home">
+            <a href="index.html">Back to Homepage</a>
         </div>
     </div>
 
@@ -170,13 +193,13 @@
             const fullscreen = document.getElementById('fullscreen');
             fullscreen.style.display = 'flex';
             fullscreen.querySelector('img').src = img.src;
-            document.body.classList.add('blur');
+            document.body.classList.add('fullscreen-active');
         }
 
         function closeFullscreen() {
             const fullscreen = document.getElementById('fullscreen');
             fullscreen.style.display = 'none';
-            document.body.classList.remove('blur');
+            document.body.classList.remove('fullscreen-active');
         }
 
         setInterval(() => moveSlide(1), 6000);
@@ -184,6 +207,7 @@
 
 </body>
 </html>
+
 
 
 
