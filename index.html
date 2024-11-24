@@ -7,7 +7,6 @@
     <title>Most Ambitious Clothing</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* General page styling */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -23,7 +22,6 @@
             color: white;
         }
 
-        /* Transparent overlay over entire body */
         body::before {
             content: '';
             position: fixed;
@@ -35,109 +33,66 @@
             z-index: -1;
         }
 
-        /* Wrapper for all content */
         .wrapper {
             flex: 1;
             display: flex;
             flex-direction: column;
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            cursor: pointer;
-            z-index: 2;
-            background-color: transparent;
-            border: none;
-            color: white;
-            font-size: 2.5rem;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .hamburger:hover {
-            transform: scale(1.1);
-        }
-
-        /* Navigation Menu */
-        .nav-panel {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 250px;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            color: white;
-            display: flex;
-            flex-direction: column;
+            align-items: center;
             padding: 20px;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.7);
-            transform: translateX(-100%);
-            visibility: hidden;
-            transition: transform 0.4s ease, visibility 0.4s ease;
-            z-index: 3;
         }
 
-        .nav-panel a {
-            text-decoration: none;
-            color: white;
-            font-size: 1.3em;
-            margin: 15px 0;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+        .product-listings {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
         }
 
-        .nav-panel a:hover {
-            background-color: #D86A1A;
-            color: white;
-            transform: scale(1.05);
-        }
-
-        .nav-panel.active {
-            transform: translateX(0);
-            visibility: visible;
-        }
-
-        /* Exit Button */
-        .exit-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2rem;
-            cursor: pointer;
-            background-color: transparent;
-            border: none;
-            color: white;
-        }
-
-        .exit-btn:hover {
-            transform: rotate(90deg);
-            transition: transform 0.3s ease;
-        }
-
-        /* Brand Message */
-        .brand-message {
-            padding: 40px 20px;
+        .product-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
             text-align: center;
-            font-size: 2em;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-top: 20px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .brand-message p {
-            margin: 10px 0;
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-card h3 {
+            margin: 15px 0 10px;
+            font-size: 1.5em;
+        }
+
+        .product-card p {
             font-size: 1.2em;
-            line-height: 1.5;
-            font-weight: 400;
-            opacity: 0.9;
+            color: #FFA500;
+            margin-bottom: 15px;
         }
 
-        /* Footer */
+        .view-details {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #D86A1A;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-details:hover {
+            background: #FFA500;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -156,30 +111,12 @@
             color: #FFA500;
             text-decoration: underline;
         }
-
-        /* Button Glow Effect */
-        .hamburger, .exit-btn {
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .brand-message {
-                font-size: 1.5em;
-            }
-
-            .nav-panel a {
-                font-size: 1.1em;
-            }
-        }
     </style>
 </head>
 <body>
 
-    <!-- Hamburger Menu -->
     <button class="hamburger" id="hamburger" onclick="toggleMenu()">&#9776;</button>
 
-    <!-- Navigation Menu -->
     <nav class="nav-panel" id="navPanel">
         <button class="exit-btn" id="exitButton" onclick="toggleMenu()">&#10005;</button>
         <a href="#home">Home</a>
@@ -187,15 +124,28 @@
         <a href="sweatsuits.html">Sweatsuits</a>
     </nav>
 
-    <!-- Main Content Wrapper -->
     <div class="wrapper">
-        <!-- Brand Message -->
         <section class="brand-message">
             <p>Here to inspire the passionate, desired, and determined</p>
         </section>
+
+        <!-- Product Listings -->
+        <section class="product-listings">
+            <div class="product-card">
+                <img src="hoodie.jpg" alt="Hoodie Product">
+                <h3>Stylish Hoodie</h3>
+                <p>$49.99</p>
+                <a href="hoodie-details.html" class="view-details">View Details</a>
+            </div>
+            <div class="product-card">
+                <img src="sweatsuit.jpg" alt="Sweatsuit Product">
+                <h3>Classic Sweatsuit</h3>
+                <p>$89.99</p>
+                <a href="sweatsuit-details.html" class="view-details">View Details</a>
+            </div>
+        </section>
     </div>
 
-    <!-- Footer -->
     <footer>
         <p><strong>Founded:</strong> 2021</p>
         <p><strong>Contact Us:</strong></p>
@@ -204,7 +154,6 @@
     </footer>
 
     <script>
-        // Toggle the navigation menu
         function toggleMenu() {
             const navPanel = document.getElementById('navPanel');
             const hamburger = document.getElementById('hamburger');
@@ -215,6 +164,7 @@
 
 </body>
 </html>
+
 
 
 
