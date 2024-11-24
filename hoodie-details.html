@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            background-image: url('IMG_1868.jpg'); /* Replace with your image path */
+            background-image: url('IMG_1868.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center center;
@@ -38,36 +38,83 @@
             padding: 20px;
         }
 
-        .product-details {
-            text-align: center;
+        .slider-container {
+            position: relative;
             max-width: 800px;
-            background: rgba(255, 255, 255, 0.1);
+            margin: 20px auto;
+            overflow: hidden;
             border-radius: 10px;
-            padding: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
-        .product-details img {
-            max-width: 100%;
-            border-radius: 10px;
-            margin-bottom: 20px;
+        .slider {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+
+        .slider img {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            padding: 10px;
+            z-index: 2;
+        }
+
+        .arrow.left {
+            left: 10px;
+        }
+
+        .arrow.right {
+            right: 10px;
+        }
+
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            display: none;
+        }
+
+        .fullscreen img {
+            max-width: 90%;
+            max-height: 90%;
+            cursor: pointer;
+        }
+
+        .blur {
+            filter: blur(5px);
+        }
+
+        .product-details {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
         }
 
         .product-details h1 {
             font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .product-details p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin: 10px 0;
         }
 
         .price {
             font-size: 1.5em;
             color: #FFA500;
-            margin: 15px 0;
         }
 
         .add-to-cart {
@@ -78,50 +125,65 @@
             text-decoration: none;
             border-radius: 5px;
             font-size: 1.2em;
-            transition: background-color 0.3s ease;
-        }
-
-        .add-to-cart:hover {
-            background: #FFA500;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 1em;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-        }
-
-        footer a {
-            color: #D86A1A;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        footer a:hover {
-            color: #FFA500;
-            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
     <div class="wrapper">
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <img src="hoodie1.jpg" alt="Hoodie 1" onclick="openFullscreen(this)">
+                <img src="hoodie2.jpg" alt="Hoodie 2" onclick="openFullscreen(this)">
+                <img src="hoodie3.jpg" alt="Hoodie 3" onclick="openFullscreen(this)">
+                <img src="hoodie4.jpg" alt="Hoodie 4" onclick="openFullscreen(this)">
+                <img src="hoodie5.jpg" alt="Hoodie 5" onclick="openFullscreen(this)">
+                <img src="hoodie6.jpg" alt="Hoodie 6" onclick="openFullscreen(this)">
+            </div>
+            <div class="arrow left" onclick="moveSlide(-1)">&#10094;</div>
+            <div class="arrow right" onclick="moveSlide(1)">&#10095;</div>
+        </div>
+
         <div class="product-details">
-            <img src="hoodie.jpg" alt="Stylish Hoodie">
             <h1>Stylish Hoodie</h1>
-            <p>Our stylish hoodie is perfect for any occasion. Crafted with premium fabric, it provides maximum comfort and durability. Available in various sizes and colors.</p>
+            <p>Premium quality hoodie, perfect for any occasion. Available in all sizes.</p>
             <p class="price">$49.99</p>
             <a href="cart.html" class="add-to-cart">Add to Cart</a>
         </div>
     </div>
 
-    <footer>
-        <p>© 2024 Most Ambitious Clothing. All Rights Reserved.</p>
-    </footer>
+    <div class="fullscreen" id="fullscreen" onclick="closeFullscreen()">
+        <img src="" alt="Fullscreen Image">
+    </div>
+
+    <script>
+        let currentSlide = 0;
+
+        function moveSlide(step) {
+            const slider = document.getElementById('slider');
+            const slides = slider.children.length;
+            currentSlide = (currentSlide + step + slides) % slides;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function openFullscreen(img) {
+            const fullscreen = document.getElementById('fullscreen');
+            fullscreen.style.display = 'flex';
+            fullscreen.querySelector('img').src = img.src;
+            document.body.classList.add('blur');
+        }
+
+        function closeFullscreen() {
+            const fullscreen = document.getElementById('fullscreen');
+            fullscreen.style.display = 'none';
+            document.body.classList.remove('blur');
+        }
+
+        setInterval(() => moveSlide(1), 6000);
+    </script>
 
 </body>
 </html>
+
 
 
