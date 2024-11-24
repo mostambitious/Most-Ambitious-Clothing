@@ -7,13 +7,11 @@
     <title>Most Ambitious Clothing</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* General styling */
+        /* General Styling */
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
             min-height: 100vh;
             background-image: url('IMG_1868.jpg'); /* Replace with your image path */
             background-size: cover;
@@ -73,6 +71,62 @@
             opacity: 0.9;
         }
 
+        .listings {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .listing-card {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .listing-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .listing-card h3 {
+            font-size: 1.5em;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .listing-card p {
+            font-size: 1em;
+            padding: 0 15px 15px;
+            text-align: center;
+        }
+
+        .listing-card a {
+            display: block;
+            margin: 15px auto 20px;
+            width: 80%;
+            text-align: center;
+            padding: 10px 20px;
+            background: #D86A1A;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background 0.3s ease;
+        }
+
+        .listing-card a:hover {
+            background: #FFA500;
+        }
+
+        .listing-card:hover {
+            transform: translateY(-5px);
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -102,10 +156,27 @@
         <a href="sweatsuits.html">Sweatsuits</a>
     </nav>
 
-    <!-- Main Content Wrapper -->
+    <!-- Main Content -->
     <div class="wrapper">
+        <!-- Brand Message -->
         <section class="brand-message">
             <p>Here to inspire the passionate, desired, and determined</p>
+        </section>
+
+        <!-- Product Listings -->
+        <section class="listings">
+            <div class="listing-card">
+                <img src="hoodie.jpg" alt="Stylish Hoodie">
+                <h3>Stylish Hoodie</h3>
+                <p>Premium quality hoodie, perfect for any occasion.</p>
+                <a href="hoodies.html">View More</a>
+            </div>
+            <div class="listing-card">
+                <img src="sweatsuit.jpg" alt="Comfortable Sweatsuit">
+                <h3>Comfortable Sweatsuit</h3>
+                <p>Stay cozy and stylish with our premium sweatsuit.</p>
+                <a href="sweatsuits.html">View More</a>
+            </div>
         </section>
     </div>
 
@@ -119,6 +190,7 @@
 
 </body>
 </html>
+
 
 
 
